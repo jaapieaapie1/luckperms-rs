@@ -176,9 +176,9 @@ impl LuckClient {
             track,
         }).send().await?;
 
-        response.error_for_status()?;
 
-        Ok(response.json().await?)
+
+        Ok(response.error_for_status()?.json().await?)
     }
 
     /// Demote a user along a track.
@@ -188,8 +188,6 @@ impl LuckClient {
             track,
         }).send().await?;
 
-        response.error_for_status()?;
-
-        Ok(response.json().await?)
+        Ok(response.error_for_status()?.json().await?)
     }
 }

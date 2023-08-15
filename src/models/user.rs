@@ -1,4 +1,4 @@
-use std::iter::Map;
+use std::collections::HashMap;
 use uuid::Uuid;
 use crate::models::node::Node;
 
@@ -23,7 +23,7 @@ pub struct User {
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Metadata {
-    pub meta: Map<String, String>,
+    pub meta: HashMap<String, String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
     pub prefix: Option<String>,

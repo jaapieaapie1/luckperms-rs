@@ -1,4 +1,3 @@
-use std::string::ParseError;
 use reqwest::header::HeaderMap;
 use reqwest::{Client, Url};
 use crate::errors::ClientCreationError;

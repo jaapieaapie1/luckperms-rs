@@ -17,8 +17,7 @@ impl LuckClient {
     pub async fn create_group(&self, name: String) -> Result<Group, RequestError> {
         let url = self.base_url.join("/group")?;
         let response = self.client.post(url).json(&GroupCreateRequest {name}).send().await?;
-        response.error_for_status()?;
-        Ok(response.json().await?)
+        Ok(response.error_for_status()?.json().await?)
     }
 
     /// Search for a group matching nodes.
@@ -67,16 +66,16 @@ impl LuckClient {
     /// Add a node to a group.
     pub async fn add_group_node(&self, name: String, node: Node) -> Result<Vec<Node>, RequestError> {
         let url = self.base_url.join(&format!("/group/{}/nodes", name))?;
-        let response = self.client.post(url).json(&node).send().await?;
-        response.error_for_status()?;
+        let response = self.client.post(url).json(&node).send().await?
+            .error_for_status()?;
         Ok(response.json().await?)
     }
 
     /// Add multiple nodes to a group.
     pub async fn add_group_nodes(&self, name: String, nodes: Vec<Node>) -> Result<Vec<Node>, RequestError> {
         let url = self.base_url.join(&format!("/group/{}/nodes", name))?;
-        let response = self.client.patch(url).json(&nodes).send().await?;
-        response.error_for_status()?;
+        let response = self.client.patch(url).json(&nodes).send().await?
+            .error_for_status()?;
         Ok(response.json().await?)
     }
 

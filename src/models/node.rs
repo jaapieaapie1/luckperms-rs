@@ -19,3 +19,17 @@ pub enum NodeType {
     Weight,
     DisplayName,
 }
+
+impl NodeType {
+    pub fn to_string(&self) -> String {
+        match self {
+            Self::RegexPermission => "regex_permission".to_string(),
+            Self::Inheritance => "inheritance".to_string(),
+            Self::Prefix => "prefix".to_string(),
+            Self::Suffix => "suffix".to_string(),
+            Self::Meta => "meta".to_string(),
+            Self::Weight => "weight".to_string(),
+            Self::DisplayName => "display_name".to_string(),
+        }
+    }
+}

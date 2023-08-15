@@ -1,13 +1,13 @@
 use serde::{Deserialize, Serialize};
 use crate::models::{Node, Metadata};
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct GroupCreateRequest {
     pub name: String,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Group {
     pub name: String,
@@ -21,7 +21,7 @@ pub struct Group {
     pub metadata: Metadata,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct GroupSearchResult {
     pub name: String,
